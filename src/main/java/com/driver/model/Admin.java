@@ -32,11 +32,11 @@ public class Admin {
         this.id = id;
     }
 
-    public String getName() {
+    public String getUsername() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setUsername(String name) {
         this.name = name;
     }
 
