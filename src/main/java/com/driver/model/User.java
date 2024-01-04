@@ -66,11 +66,11 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
+    public String getUsername() {
         return userName;
     }
 
-    public void setUserName(String userName) {
+    public void setUsername(String userName) {
         this.userName = userName;
     }
 
@@ -82,23 +82,23 @@ public class User {
         this.password = password;
     }
 
-    public String getOriginalIP() {
+    public String getOriginalIp() {
         return originalIP;
     }
 
-    public void setOriginalIP(String originalIP) {
+    public void setOriginalIp(String originalIP) {
         this.originalIP = originalIP;
     }
 
-    public String getMaskedIP() {
+    public String getMaskedIp() {
         return maskedIP;
     }
 
-    public void setMaskedIP(String maskedIP) {
+    public void setMaskedIp(String maskedIP) {
         this.maskedIP = maskedIP;
     }
 
-    public boolean isConnected() {
+    public boolean getConnected() {
         return isConnected;
     }
 

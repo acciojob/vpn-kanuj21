@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     public User register(String username, String password, String countryName) throws Exception{
         if(countryName.equalsIgnoreCase("ind") || countryName.equalsIgnoreCase("usa") || countryName.equalsIgnoreCase("aus") || countryName.equalsIgnoreCase("chi") || countryName.equalsIgnoreCase("jpn")){
             User user = new User();
-            user.setUserName(username);
+            user.setUsername(username);
             user.setPassword(password);
             Country country = new Country();
             if(countryName.equalsIgnoreCase("ind")){
@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
             user.setConnected(false);
             userRepository3.save(user);
             String originalIp = country.getCode() + "." + user.getId();
-            user.setOriginalIP(originalIp);
+            user.setOriginalIp(originalIp);
             userRepository3.save(user);
             return user;
         }else {

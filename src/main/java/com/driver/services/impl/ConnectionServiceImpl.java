@@ -22,7 +22,7 @@ public class ConnectionServiceImpl implements ConnectionService {
     @Override
     public User connect(int userId, String countryName) throws Exception{
         User user = userRepository2.findById(userId).get();
-        if (user.getMaskedIP() != null){
+        if (user.getMaskedIp() != null){
             throw new Exception("Already connected");
         }
         else if (countryName.equalsIgnoreCase(user.getOriginalCountry().getCountryName().toString())) {
@@ -52,7 +52,7 @@ public class ConnectionServiceImpl implements ConnectionService {
                 String countryCode = country1.getCode();
                 int providerId = serviceProvider1.getId();
                 String masked = countryCode + "." + providerId + "." + userId;
-                user.setMaskedIP(masked);
+                user.setMaskedIp(masked);
                 user.setConnected(true);
                 user.getConnectionList().add(connection);
                 serviceProvider1.getConnectionList().add(connection);
@@ -68,10 +68,10 @@ public class ConnectionServiceImpl implements ConnectionService {
     @Override
     public User disconnect(int userId) throws Exception {
         User user = userRepository2.findById(userId).orElse(null);
-        if(user.isConnected() == false){
+        if(user.getConnected() == false){
             throw new Exception("Already disconnected");
         }
-        user.setMaskedIP(null);
+        user.setMaskedIp(null);
         user.setConnected(false);
         userRepository2.save(user);
         return user;
@@ -80,8 +80,8 @@ public class ConnectionServiceImpl implements ConnectionService {
     public User communicate(int senderId, int receiverId) throws Exception {
         User sender = userRepository2.findById(senderId).orElse(null);
         User receiver = userRepository2.findById(receiverId).orElse(null);
-        if (receiver.getMaskedIP() != null){
-            String Ip = receiver.getMaskedIP();
+        if (receiver.getMaskedIp() != null){
+            String Ip = receiver.getMaskedIp();
             String code = Ip.substring(0, 3);
             if (code.equals(sender.getOriginalCountry().getCode())){
                 return sender;
